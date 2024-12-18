@@ -89,6 +89,58 @@ plt.show()
 ```
 ![Screenshot 2024-12-18 203158](https://github.com/user-attachments/assets/cdc7c5f3-0c3d-4736-915b-728c8e00e515)
 
+### Code for the grayscale segmentation and preprocessing of the image
+```python
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Load the image
+image = cv2.imread('path_to_image.jpg')  
+
+# Convert to grayscale
+grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Flatten the grayscale image
+pixels = grayscale_image.flatten().reshape(-1, 1)  # Each pixel is a single intensity value
+pixels = np.float32(pixels)  # Convert to float32
+
+def segment_grayscale_image(pixels, k):
+    # Apply K-Means Clustering
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    labels = kmeans.fit_predict(pixels)
+    centers = np.uint8(kmeans.cluster_centers_)  # Convert centers to uint8
+    segmented_pixels = centers[labels.flatten()]  # Map labels to center values
+    segmented_image = segmented_pixels.reshape(grayscale_image.shape)  # Reshape to original image dimensions
+    return segmented_image
+
+# Perform segmentation for k=2, 3, 4
+k_values = [2, 3, 4]
+segmented_images = [segment_grayscale_image(pixels, k) for k in k_values]
+
+# Plot the original grayscale and segmented images
+plt.figure(figsize=(15, 10))
+
+# Display the grayscale image
+plt.subplot(1, len(k_values) + 1, 1)
+plt.imshow(grayscale_image, cmap='gray')
+plt.title('Grayscale Image')
+plt.axis('off')
+
+# Display the segmented images
+for i, k in enumerate(k_values):
+    plt.subplot(1, len(k_values) + 1, i + 2)
+    plt.imshow(segmented_images[i], cmap='gray')
+    plt.title(f'Segmented (k={k})')
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()
+```
+
+
+
 # Practical Applications of Image Segmentation by Clustering
 
 ## Practical Applications
