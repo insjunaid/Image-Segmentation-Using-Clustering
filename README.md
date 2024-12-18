@@ -86,6 +86,6 @@ plt.axis('off')
 plt.tight_layout()
 plt.show()
 
-``
+```
 ![Screenshot 2024-12-18 203158](https://github.com/user-attachments/assets/cdc7c5f3-0c3d-4736-915b-728c8e00e515)
 
