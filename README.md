@@ -138,6 +138,7 @@ for i, k in enumerate(k_values):
 plt.tight_layout()
 plt.show()
 ```
+![Screenshot 2024-12-18 203911](https://github.com/user-attachments/assets/307149a6-82e0-450a-a9b2-c5528c949de5)
 
 
 
