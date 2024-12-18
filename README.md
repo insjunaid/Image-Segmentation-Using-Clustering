@@ -157,4 +157,4 @@ This project demonstrates the power of unsupervised clustering algorithms, like 
 
 Feel free to experiment with different images and adjust the parameters to see how well the clustering techniques work in various scenarios.
 
-Under the guidance of ( Dr Agughasi Victor Ikechukwu)[https://github.com/Victor-Ikechukwu]
+Under the guidance of [ Dr Agughasi Victor Ikechukwu](https://github.com/Victor-Ikechukwu)
